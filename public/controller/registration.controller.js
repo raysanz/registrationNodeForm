@@ -21,7 +21,7 @@ function insert(req, res) {
 
             const responseModel = new responses.ItemResponse();
             responseModel.item = entry;
-            responseModel.alert.message = "Entry successfully saved!"
+            responseModel.alert.modalMessage = "Entry successfully saved!"
             res
                 .status(201)
                 .location(path.join(apiPrefix, entry._id.toString()))
@@ -41,6 +41,7 @@ function getAll(req, res) {
 
             const responseModel = new responses.ItemsResponse();
             responseModel.items = entry;
+            responseModel.alert.modalMessage = "Here are all entries!"
             res.json(responseModel);
         })
         .catch(err => {
@@ -57,6 +58,7 @@ function getOneById(req, res) {
         .then(entry => {
             const responseModel = new responses.ItemResponse();
             responseModel.item = entry;
+            responseModel.alert.modalMessage = "Your Entry was Successfully Retrieved!"
             res.json(responseModel);
         })
         .catch(err => {
@@ -74,6 +76,7 @@ function updateById(req, res) {
         .then(entry => {
             const responseModel = new responses.ItemResponse();
             responseModel.item = entry
+            responseModel.alert.modalMessage = "Your Entry was Successfully Updated!"
             res.status(204).json(responseModel);
         })
         .catch(err => {
@@ -90,6 +93,7 @@ function removeById(req, res) {
         .then(entry => {
             const responseModel = new responses.ItemResponse();
             responseModel.item = entry;
+            responseModel.alert.modalMessage = "Your Entry was Successfully Deleted!"
             res.json(responseModel);
         })
         .catch(err => {
